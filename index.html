@@ -314,7 +314,7 @@
             font-size: 12px;
         }
 
-        /* 簽署區 */
+        /* 簽署區 - 重新設計 */
         .signature-section {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -346,17 +346,35 @@
             color: #666;
         }
 
-        .stamp-area {
-            width: 80px;
-            height: 80px;
-            border: 2px dashed #D2583A;
-            border-radius: 50%;
+        /* 公司章專屬區域 - 明顯的方框設計 */
+        .stamp-box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #999;
+            border-radius: 8px;
             margin: 0 auto 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #D2583A;
+            background: #fafafa;
+            color: #999;
             font-size: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .stamp-box span {
+            display: block;
+        }
+
+        .stamp-hint {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #aaa;
+            white-space: nowrap;
         }
 
         /* 列印樣式 */
@@ -502,7 +520,10 @@
                         <div class="signature-label">發證日期</div>
                     </div>
                     <div class="signature-block">
-                        <div class="stamp-area">公司章</div>
+                        <div class="stamp-box">
+                            <span>公司章</span>
+                        </div>
+                        <span class="stamp-hint">（請蓋章）</span>
                         <div class="signature-label">思考者咖啡有限公司</div>
                     </div>
                 </div>
