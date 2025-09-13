@@ -252,6 +252,8 @@
         @media print {
             body {
                 background: white;
+                margin: 0;
+                padding: 0;
             }
             .control {
                 display: none;
@@ -259,6 +261,24 @@
             .certificate {
                 box-shadow: none;
                 display: block !important;
+                padding: 15mm 20mm !important; /* 縮小列印邊距 */
+                margin: 0;
+                width: 100%;
+                min-height: auto;
+            }
+            /* 縮小一些元素間距來節省空間 */
+            .header {
+                margin-bottom: 20px !important;
+            }
+            .content {
+                margin: 30px 0 !important;
+            }
+            .signatures {
+                margin-top: 30px !important;
+            }
+            @page {
+                size: A4;
+                margin: 0;
             }
         }
     </style>
