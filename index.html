@@ -12,108 +12,59 @@
         }
 
         body {
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            background: #f0f0f0;
             padding: 20px;
         }
 
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 40px;
+        .control {
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* 控制面板 */
-        .control-panel {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-
-        .control-panel h2 {
-            color: #2c2c2c;
+        .control h2 {
             margin-bottom: 20px;
-            font-size: 24px;
+            color: #333;
         }
 
-        .input-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+        .control input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
         }
 
-        .input-field {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .input-field label {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .input-field input {
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .input-field input:focus {
-            outline: none;
-            border-color: #D2583A;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 12px 24px;
+        .control button {
+            padding: 10px 20px;
+            margin: 5px;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn-generate {
-            background: linear-gradient(135deg, #D2583A, #FF6B35);
+            background: #D2583A;
             color: white;
-            flex: 1;
         }
 
         .btn-print {
-            background: #2c2c2c;
+            background: #333;
             color: white;
         }
 
-        /* 證書樣式 */
+        /* A4 證書 */
         .certificate {
             width: 210mm;
-            height: 297mm;
-            padding: 25mm;
+            min-height: 297mm;
             background: white;
-            position: relative;
-            overflow: hidden;
+            margin: 0 auto;
+            padding: 30mm 25mm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             display: none;
         }
 
@@ -121,471 +72,313 @@
             display: block;
         }
 
-        /* 幾何裝飾背景 */
-        .certificate::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(210, 88, 58, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
-            transform: rotate(-15deg);
-        }
-
-        .certificate-content {
-            position: relative;
-            z-index: 1;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Logo 區域 */
-        .logo-section {
+        /* 證書內容 */
+        .header {
             text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, #D2583A, #FF6B35);
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: white;
-        }
-
-        .company-name {
-            font-size: 18px;
-            color: #666;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .certificate-title {
-            font-size: 36px;
-            color: #2c2c2c;
-            font-weight: bold;
-            letter-spacing: 8px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .certificate-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #D2583A, #FF6B35);
-        }
-
-        /* 主要內容 */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .declaration {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .student-name {
-            font-size: 48px;
-            color: #D2583A;
-            font-weight: bold;
-            margin: 30px 0;
-            position: relative;
-        }
-
-        .student-name::before,
-        .student-name::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #D2583A);
-        }
-
-        .student-name::before {
-            left: -80px;
-        }
-
-        .student-name::after {
-            right: -80px;
-            background: linear-gradient(90deg, #D2583A, transparent);
-        }
-
-        .course-description {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #333;
             margin-bottom: 40px;
         }
 
-        /* 課程資訊框 */
-        .course-info {
-            background: #f8f9fa;
-            border-left: 4px solid #D2583A;
-            padding: 25px;
-            margin: 30px 0;
-            text-align: left;
+        .logo {
+            font-size: 60px;
+            margin-bottom: 10px;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+        .company {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: #D2583A;
+            margin: 0 auto;
+        }
+
+        .content {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .student-name {
+            font-size: 36px;
+            color: #D2583A;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 2;
+            color: #333;
+            margin: 30px 0;
+        }
+
+        .info-box {
+            background: #f8f8f8;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid #D2583A;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
         }
 
         .info-item {
-            display: flex;
-            align-items: baseline;
+            flex: 1;
+            text-align: left;
         }
 
-        .info-label {
-            font-size: 14px;
+        .label {
             color: #666;
-            min-width: 80px;
+            font-size: 14px;
         }
 
-        .info-value {
+        .value {
+            color: #333;
             font-size: 16px;
-            color: #2c2c2c;
-            font-weight: 500;
-            margin-left: 10px;
+            font-weight: bold;
         }
 
-        /* 技能標籤 */
-        .skills-section {
+        .skills {
             margin: 30px 0;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(210, 88, 58, 0.05), rgba(255, 107, 53, 0.05));
-            border-radius: 10px;
+            background: #fff8f5;
         }
 
-        .skills-title {
-            font-size: 16px;
+        .skills h3 {
+            font-size: 18px;
             color: #666;
             margin-bottom: 15px;
             text-align: center;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-        .skill-item {
+        .skill {
             display: flex;
             align-items: center;
             font-size: 14px;
+        }
+
+        .skill::before {
+            content: "✓";
+            color: #D2583A;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* 簽名區 - 最重要的部分！ */
+        .signatures {
+            margin-top: 60px;
+            display: table;
+            width: 100%;
+        }
+
+        .sig-row {
+            display: table-row;
+        }
+
+        .sig-cell {
+            display: table-cell;
+            width: 33.33%;
+            text-align: center;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .sig-line {
+            border-bottom: 1px solid #333;
+            height: 50px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 5px;
+        }
+
+        .sig-name {
+            font-size: 20px;
             color: #333;
         }
 
-        .skill-item::before {
-            content: '✓';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #D2583A;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            margin-right: 8px;
-            font-size: 12px;
-        }
-
-        /* 簽署區 - 重新設計 */
-        .signature-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .signature-block {
-            text-align: center;
-        }
-
-        .signature-line {
-            border-bottom: 1px solid #333;
-            margin-bottom: 8px;
-            padding-bottom: 30px;
-            position: relative;
-        }
-
-        .signature-text {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 24px;
-            color: #2c2c2c;
-        }
-
-        .signature-label {
+        .sig-title {
             font-size: 12px;
             color: #666;
         }
 
-        /* 公司章專屬區域 - 明顯的方框設計 */
-        .stamp-box {
-            width: 100px;
-            height: 100px;
-            border: 2px solid #999;
-            border-radius: 8px;
-            margin: 0 auto 8px;
+        /* 公司章框 - 超級明顯版本！ */
+        .stamp-frame {
+            width: 120px;
+            height: 120px;
+            border: 3px solid #000;
+            margin: 0 auto 10px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #fafafa;
-            color: #999;
-            font-size: 12px;
-            text-align: center;
-            position: relative;
+            background: white;
         }
 
-        .stamp-box span {
-            display: block;
+        .stamp-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
         }
 
         .stamp-hint {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 10px;
-            color: #aaa;
-            white-space: nowrap;
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
         }
 
-        /* 列印樣式 */
         @media print {
             body {
                 background: white;
-                padding: 0;
             }
-
-            .container {
-                box-shadow: none;
-                padding: 0;
-            }
-
-            .control-panel {
+            .control {
                 display: none;
             }
-
             .certificate {
-                display: block !important;
                 box-shadow: none;
-            }
-
-            @page {
-                size: A4;
-                margin: 0;
-            }
-        }
-
-        /* 響應式調整 */
-        @media screen and (max-width: 768px) {
-            .certificate {
-                transform: scale(0.5);
-                transform-origin: top left;
-                width: 420mm;
-                height: 594mm;
-            }
-
-            .container {
-                overflow-x: auto;
+                display: block !important;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 控制面板 -->
-        <div class="control-panel">
-            <h2>📜 研習證明生成器</h2>
-            <div class="input-group">
-                <div class="input-field">
-                    <label for="studentName">學員姓名</label>
-                    <input type="text" id="studentName" placeholder="請輸入姓名">
+    <!-- 控制面板 -->
+    <div class="control">
+        <h2>研習證明生成器</h2>
+        <div>
+            <input type="text" id="name" placeholder="學員姓名">
+            <input type="text" id="number" placeholder="證書編號" value="THINKER-202509-001">
+            <input type="date" id="date" value="2025-09-13">
+        </div>
+        <div>
+            <button class="btn-generate" onclick="generate()">生成證書</button>
+            <button class="btn-print" onclick="window.print()">列印 PDF</button>
+        </div>
+    </div>
+
+    <!-- 證書本體 -->
+    <div class="certificate" id="cert">
+        <div class="header">
+            <div class="logo">🦉</div>
+            <div class="company">思考者咖啡有限公司</div>
+            <div class="title">研習證明</div>
+            <div class="divider"></div>
+        </div>
+
+        <div class="content">
+            <p style="font-size: 20px; color: #666;">茲證明</p>
+            <div class="student-name" id="showName">＿＿＿＿＿</div>
+            <p style="font-size: 20px; color: #666;">君</p>
+            
+            <div class="description">
+                完成本公司舉辦之<br>
+                <strong>「Claude Code 商業爬蟲實戰班」</strong><br>
+                研習課程，並成功實作 eTag 帳單自動化專案
+            </div>
+
+            <div class="info-box">
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="label">研習日期：</span>
+                        <span class="value" id="showDate">2025年9月13日</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">研習時數：</span>
+                        <span class="value">6小時</span>
+                    </div>
                 </div>
-                <div class="input-field">
-                    <label for="certificateNumber">證書編號</label>
-                    <input type="text" id="certificateNumber" value="THINKER-202509-001">
-                </div>
-                <div class="input-field">
-                    <label for="courseDate">上課日期</label>
-                    <input type="date" id="courseDate" value="2025-09-13">
-                </div>
-                <div class="input-field">
-                    <label for="issueDate">發證日期</label>
-                    <input type="date" id="issueDate" value="2025-09-13">
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="label">證書編號：</span>
+                        <span class="value" id="showNumber">THINKER-202509-001</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">課程講師：</span>
+                        <span class="value">湯明軒</span>
+                    </div>
                 </div>
             </div>
-            <div class="btn-group">
-                <button class="btn-generate" onclick="generateCertificate()">生成證書</button>
-                <button class="btn-print" onclick="window.print()">列印 PDF</button>
+
+            <div class="skills">
+                <h3>核心技能習得</h3>
+                <div class="skill-list">
+                    <div class="skill">Claude Code AI 協作開發</div>
+                    <div class="skill">Selenium 網頁自動化</div>
+                    <div class="skill">Python 爬蟲實戰應用</div>
+                    <div class="skill">驗證碼辨識技術入門</div>
+                    <div class="skill">完成 eTag 帳單自動化專案</div>
+                </div>
             </div>
         </div>
 
-        <!-- 證書 -->
-        <div class="certificate" id="certificate">
-            <div class="certificate-content">
-                <!-- Logo 和標題 -->
-                <div class="logo-section">
-                    <div class="logo">🦉</div>
-                    <div class="company-name">思考者咖啡有限公司</div>
-                    <h1 class="certificate-title">研習證明</h1>
+        <!-- 簽名與蓋章區 -->
+        <div class="signatures">
+            <div class="sig-row">
+                <div class="sig-cell">
+                    <div class="sig-line">
+                        <span class="sig-name">湯明軒</span>
+                    </div>
+                    <div class="sig-title">講師簽名</div>
                 </div>
-
-                <!-- 主要內容 -->
-                <div class="main-content">
-                    <p class="declaration">茲證明</p>
-                    <h2 class="student-name" id="displayName">學員姓名</h2>
-                    <p class="declaration">君</p>
-                    
-                    <p class="course-description">
-                        完成本公司舉辦之<br>
-                        <strong>「Claude Code 商業爬蟲實戰班」</strong><br>
-                        研習課程，並成功實作 eTag 帳單自動化專案
-                    </p>
-
-                    <!-- 課程資訊 -->
-                    <div class="course-info">
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <span class="info-label">研習日期：</span>
-                                <span class="info-value" id="displayDate">2025年9月13日</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">研習時數：</span>
-                                <span class="info-value">6 小時</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">證書編號：</span>
-                                <span class="info-value" id="displayNumber">THINKER-202509-001</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">課程講師：</span>
-                                <span class="info-value">湯明軒</span>
-                            </div>
-                        </div>
+                <div class="sig-cell">
+                    <div class="sig-line">
+                        <span class="sig-name" id="showIssueDate">2025年9月13日</span>
                     </div>
-
-                    <!-- 技能認證 -->
-                    <div class="skills-section">
-                        <div class="skills-title">核心技能習得</div>
-                        <div class="skills-grid">
-                            <div class="skill-item">Claude Code AI 協作開發</div>
-                            <div class="skill-item">Selenium 網頁自動化</div>
-                            <div class="skill-item">Python 爬蟲實戰應用</div>
-                            <div class="skill-item">驗證碼辨識技術入門</div>
-                            <div class="skill-item">完成 eTag 帳單自動化專案</div>
-                        </div>
-                    </div>
+                    <div class="sig-title">發證日期</div>
                 </div>
-
-                <!-- 簽署區 -->
-                <div class="signature-section">
-                    <div class="signature-block">
-                        <div class="signature-line">
-                            <span class="signature-text">湯明軒</span>
-                        </div>
-                        <div class="signature-label">講師簽名</div>
+                <div class="sig-cell">
+                    <!-- 公司章框 - 這次一定會出現！ -->
+                    <div class="stamp-frame">
+                        <div class="stamp-text">公司章</div>
+                        <div class="stamp-hint">蓋章處</div>
                     </div>
-                    <div class="signature-block">
-                        <div class="signature-line">
-                            <span class="signature-text" id="displayIssueDate">2025年9月13日</span>
-                        </div>
-                        <div class="signature-label">發證日期</div>
-                    </div>
-                    <div class="signature-block">
-                        <div class="stamp-box">
-                            <span>公司章</span>
-                        </div>
-                        <span class="stamp-hint">（請蓋章）</span>
-                        <div class="signature-label">思考者咖啡有限公司</div>
-                    </div>
+                    <div class="sig-title">思考者咖啡有限公司</div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 初始化日期
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('courseDate').value = '2025-09-13';
-            document.getElementById('issueDate').value = today;
-        });
-
-        // 生成證書
-        function generateCertificate() {
-            const name = document.getElementById('studentName').value;
-            
+        function generate() {
+            const name = document.getElementById('name').value;
             if (!name) {
                 alert('請輸入學員姓名');
                 return;
             }
-
-            // 更新證書內容
-            document.getElementById('displayName').textContent = name;
-            document.getElementById('displayNumber').textContent = document.getElementById('certificateNumber').value;
             
-            // 格式化日期
-            const courseDate = new Date(document.getElementById('courseDate').value);
-            const issueDate = new Date(document.getElementById('issueDate').value);
+            document.getElementById('showName').textContent = name;
+            document.getElementById('showNumber').textContent = document.getElementById('number').value;
             
-            const formatDate = (date) => {
-                return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-            };
+            const date = new Date(document.getElementById('date').value);
+            const dateStr = `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`;
+            document.getElementById('showDate').textContent = dateStr;
+            document.getElementById('showIssueDate').textContent = dateStr;
             
-            document.getElementById('displayDate').textContent = formatDate(courseDate);
-            document.getElementById('displayIssueDate').textContent = formatDate(issueDate);
-            
-            // 顯示證書
-            document.getElementById('certificate').classList.add('show');
-            
-            // 自動捲動到證書位置
-            document.getElementById('certificate').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('cert').classList.add('show');
+            document.getElementById('cert').scrollIntoView({behavior: 'smooth'});
         }
-
-        // 快速填入測試資料（開發用）
-        function fillTestData() {
-            document.getElementById('studentName').value = '王小明';
-            generateCertificate();
-        }
-
-        // 鍵盤快捷鍵
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'p') {
-                e.preventDefault();
-                window.print();
-            }
-            if (e.ctrlKey && e.key === 'Enter') {
-                generateCertificate();
-            }
-        });
     </script>
 </body>
 </html>
